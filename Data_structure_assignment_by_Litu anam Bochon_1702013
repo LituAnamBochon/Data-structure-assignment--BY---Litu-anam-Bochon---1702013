@@ -1,0 +1,220 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAX_size 100
+ 
+int main()
+{
+    while(1)
+    {
+        int c, array[MAX_size], size, i, j, num, pos, Search, found, temp;
+        printf("Welcome. Here,Option for You.Please choose:\n\n");
+        printf("0.Exit\n1.View all elements.\n2.Insert a new element.\n3.Search an element.\n4.Delete an element.\n5.Sort elements in ascending order.\n6.Sort elements in Descending order.\n7.Find memory location of an array element.");
+        printf("\nEnter Your choice: ");
+        scanf("%d", &c);
+        if( c <= 7 && c >= 0 )
+        {
+            switch(c)
+            {
+            case 1:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nAll elements are: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("%d  ", array[i]);
+                }
+                printf(" ");
+                break;
+            case 2:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nInsert new element: ");
+                printf("\nEnter element to insert : ");
+                scanf("%d", &num);
+                printf("\nEnter the element position : ");
+                scanf("%d", &pos);
+ 
+                if(pos > size+1 || pos <= 0)
+                {
+                    printf("Invalid position! Please enter position between 1 to %d", size);
+                }
+                else
+                {
+                    for(i=size; i>=pos; i--)
+                    {
+                        array[i] = array[i-1];
+                    }
+                    array[pos-1] = num;
+                    size++;
+                    printf("Array elements after insertion : ");
+                    for(i=0; i<size; i++)
+                    {
+                        printf("%d\t", array[i]);
+                    }
+                    break;
+                }
+ 
+            case 3:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nEnter for Searching element: ");
+                printf("\nEnter element to search: ");
+                scanf("%d", &Search);
+                found = 0;
+                for(i=0; i<size; i++)
+                {
+                    if(array[i] == Search)
+                    {
+                        found = 1;
+                        break;
+                    }
+                }
+                if(found == 1)
+                {
+                    printf("\n%d is found at position %d", Search, i + 1);
+                }
+                else
+                {
+                    printf("\n%d is not found in the array", Search);
+                }
+                break;
+            case 4:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nEnter the element position to delete : ");
+                scanf("%d", &pos);
+                if(pos < 0 || pos > size)
+                {
+                    printf("Invalid position! Please enter position between 1 to %d", size);
+                }
+                else
+                {
+                    for(i=pos-1; i<size-1; i++)
+                    {
+                        array[i] = array[i + 1];
+                    }
+                    size--;
+                }
+                printf("\nElements of array after delete are : ");
+                for(i=0; i<size; i++)
+                {
+                    printf("%d  ", array[i]);
+                }
+                break;
+            case 5:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nBefore ascendng ordder: ");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("%d  ", array[i]);
+                }
+ 
+                for(i=0; i<size; i++)
+                {
+                    for(j=i+1; j<size; j++)
+                    {
+                        if(array[i] > array[j])
+                        {
+                            temp     = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
+                printf("\nElements of array in ascending order: ");
+                for(i=0; i<size; i++)
+                {
+                    printf("%d  ", array[i]);
+                }
+                break;
+            case 6:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nBefore Descending order: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("%d  ", array[i]);
+                }
+                for (i = 0; i < size; ++i)
+                {
+                    for (j = i + 1; j < size; ++j)
+                    {
+                        if (array[i] < array[j])
+                        {
+                            temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
+ 
+                printf("\nThe numbers arranged in descending order are given below:\n");
+ 
+                for (i = 0; i < size; ++i)
+                {
+                    printf("%d  ", array[i]);
+                }
+                break;
+            case 7:
+                printf("\n\nEnter size of the array : ");
+                scanf("%d", &size);
+                printf("Enter elements: \n");
+                for( i = 0; i < size; i++ )
+                {
+                    printf("array[%d] = ", i+1);
+                    scanf("%d", &array[i]);
+                }
+                printf("\nEnter element position for finding memory address: \n");
+                scanf("%d", &i+1);
+                printf("%p  ", &array[i]);
+                break;
+            case 0:
+                printf("\nExit\n.Program End.\a\n");
+                break;
+            default:
+                printf("Please again try.\n");
+ 
+            }
+        }
+        else
+            printf("\nError! Please Enter a valid number.\n\a\a");
+    }
+    getch();
+}
